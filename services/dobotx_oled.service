@@ -1,0 +1,12 @@
+[Unit]
+Description=dofbotx_oled start service
+After=multi-user.target
+
+[Service]
+Type=idle
+User=jetson
+ExecStart=/bin/sh -c "python3 /home/jetson/DofbotX/utilities/oled.py"
+WorkingDirectory=/home/jetson
+
+[Install]
+WantedBy=multi-user.target
