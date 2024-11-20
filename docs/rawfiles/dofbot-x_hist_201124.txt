@@ -1,0 +1,137 @@
+    1  sudo apt-get update && sudo apt update 
+    2  sudo apt upgrade 
+    3  sudo apt autoremove
+    4  sudo apt shutdown -r now
+    5  sudo shutdown -r now
+    6  echo "Instalando prerequisitos: Nerdfonts, lsd, git, curl"
+    7  sudo apt install curl git
+    8  echo "Descargando 'SourceCodePro (Sauce Code Pro Nerd Fonts)' de https://www.nerdfonts.com/font-downloads"
+    9  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/SourceCodePro.zip  -P ~/Downloads
+   10  mkdir ~/.fonts
+   11  unzip ~/Downloads/SourceCodePro.zip -d ~/.fonts/SourceCodePro/
+   12  echo "Actualizando fuentes"
+   13  fc-cache -fv
+   14  fc-list | grep ".fonts"
+   15  fc-list | grep "Sauce"
+   16  fc-list | grep "SauceCodePro"
+   17  echo "Instalando fuentes... Done!"
+   18  rm ~/Downloads/
+   19  rm ~/Downloads/SourceCodePro.zip 
+   20  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   21  source $HOME/.cargo/env
+   22  rustup override set stable
+   23  rustup update stable
+   24  echo "Instalando lsd... From source... Instalando RUST compiler (rustup)... Done!"
+   25  echo "Instalando lsd... From source... Prerequisites"
+   26  sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl
+   27  cc -V
+   28  cc -v
+   29  echo "Instalando lsd... From source... Prerequisites... Done!"
+   30  echo "Instalando lsd... From source... Using cargo..."
+   31  cargo install --git https://github.com/Peltoche/lsd.git --branch master
+   32  echo "Instalando lsd... From source... Using cargo... Done!"
+   33  lsd ~/.config/
+   34  echo "Configurando lsd... "
+   35  mkdir -p ~/.config/lsd
+   36  lsd -l ~/.config/lsd/
+   37  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/lsd/config.yaml -P ~/.config/lsd/
+   38  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/lsd/themes/terminal-colors.yaml -P ~/.config/lsd/
+   39  mv ~/.config/lsd/terminal-colors.yaml ~/.config/lsd/colors.yaml
+   40  lsd -t ~/.config/lsd/
+   41  vim ~/.config/lsd/config.yaml 
+   42  lsd -t ~/.config/lsd/
+   43  lsd -l ~/.config/lsd/
+   44  echo "Configurando lsd... Done!"
+   45  echo "Customizing terminal colors (manual)... Nord and Nord (Black BG) Themes..."
+   46  ll
+   47  lsd -l
+   48  echo "Customizing terminal colors (manual)... Nord and Nord (Black BG) Themes... Done!"
+   49  echo "Configurando git(manual)..."
+   50  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/gitconfig
+   51  mv gitconfig .gitconfig
+   52  git config --global -e
+   53  vim .gitconfig 
+   54  git config --global -e
+   55  echo "Configurando git(manual)... Done!"
+   56  echo "Copying my extra scripts..."
+   57  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/gitbash/git-completition.bash -P ~/.config/gitbash/
+   58  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/gitbash/git-prompt.sh -P ~/.config/gitbash/
+   59  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/rosmgmt/ros_mgmt.sh -P ~/.config/rosmgmt
+   60  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/rosmgmt/ros2_humble_conf.bash -P ~/.config/rosmgmt
+   61  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/rosmgmt/ros2_galactic_conf.bash -P ~/.config/rosmgmt
+   62  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/rosmgmt/ros_noetic_conf.bash -P ~/.config/rosmgmt
+   63  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/utilities/venv_prompt.sh -P ~/.config/utilities
+   64  lsd -l  ~/.config/gitbash/
+   65  lsd -l  ~/.config/rosmgmt/
+   66  lsd -l  ~/.config/utilities/
+   67  echo "Copying my extra scripts... Done!"
+   68  echo "Updating changes to 'bashrc'..."
+   69  vim .bashrc
+   70  exec "$SHELL"
+   71  vim .bashrc
+   72  exec "$SHELL"
+   73  ll
+   74  lt ~/.config/lsd/
+   75  ping -c 100 -s .2 xe.com
+   76  echo "Adding aliases  to 'bash_alias'... Done!"
+   77  vim .bash_aliases
+   78  exec "$SHELL"
+   79  rsttrm 
+   80  echo "Adding aliases  to 'bash_alias'... Done!"
+   81  ip -h
+   82  l
+   83  l ~/Downloads/
+   84  mkdir ~/Dev
+   85  cd Dev/
+   86  git clone https://github.com/arrg-mx/arrg_utils.git
+   87  cat /proc/device-tree/model
+   88  cat /sys/devices/gpu.0/load
+   89  ls /sys/devices/gpu.0/
+   90  cat /sys/devices/gpu.0/gpu_powered_on 
+   91  cat /sys/devices/gpu.0/user 
+   92  cat /sys/devices/gpu.0/load
+   93  lsusb 
+   94  ls
+   95  cd
+   96  dpkg-query --show nvidia-l4t-core
+   97  cd Dev
+   98  git clone https://github.com/dusty-nv/jetson-containers
+   99  bash jetson-containers/install.sh
+  100  ls /etc/docker/
+  101  ll /etc/docker/
+  102  sudo vim /etc/docker/daemon.json 
+  103  cat /etc/docker/daemon.json 
+  104  sudo systemctl restart docker
+  105  sudo docker info | grep 'Default Runtime'
+  106  echo $USER
+  107  sudo usermod -aG docker $USER
+  108  sudo nvpmodel -q
+  109  cd ..
+  110  cd ~/Documents/
+  111  l
+  112  ifconfig
+  113  pwd
+  114  l
+  115  cat tt
+  116  cat ttkey.txt 
+  117  git clone https://github.com/arrg-mx/dofbot-x.git
+  118  l
+  119  cd dofbot-x/
+  120  gst
+  121  git fetch main
+  122  git fetch -a
+  123  git status
+  124  git switch dobot-drv
+  125  git checkout dobot-drv
+  126  git fetch -a
+  127  l
+  128  git pull origin dobot-drv 
+  129  git checkout main
+  130  git pull origin main
+  131  git lg
+  132  l
+  133  git pull origin dobot-drv 
+  134  l
+  135  git checkout main
+  136  mkdir -p docs/rawfiles
+  137  history >> docs/rawfiles/dofbot-x_hist_201124.txt
