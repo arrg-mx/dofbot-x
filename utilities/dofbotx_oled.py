@@ -17,7 +17,7 @@ Dependencies:
 """
 
 import time
-from arrg_utils import SysInfo
+from arrg_utils.sysinfo import SysInfo
 import Adafruit_SSD1306
 from PIL import Image, ImageDraw, ImageFont
 
@@ -33,7 +33,10 @@ try:
     height = disp.height
     image = Image.new("1", (width, height))
     draw = ImageDraw.Draw(image)
-    font = ImageFont.load_default()
+    # font = ImageFont.load_default()
+    # font = ImageFont.truetype('SauceCodeProNerdFontMono-Regular.ttf', 8)
+    font = ImageFont.truetype('RobotoMonoNerdFontMono-Regular.ttf', 9)
+    # font = ImageFont.truetype('TerminessNerdFontMono-Regular.ttf', 8)
     padding = -2
     top = padding
     bottom = height - padding
@@ -55,14 +58,14 @@ def display_system_info(snapshot: dict) -> None:
         draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
         # Display CPU usage and system time
-        draw.text((x, top), f"CPU: {snapshot['cpu']}%", font=font, fill=255)
+        draw.text((x, top), f"CPU: {snapshot['cpu']:.2f}%", font=font, fill=255)
         draw.text((x + 50, top), snapshot["time"], font=font, fill=255)
 
         # Display RAM and Disk usage
         ram_info = snapshot["ram"]
         draw.text(
             (x, top + 8),
-            f"RAM: {ram_info['available']}/{ram_info['total']}GB",
+            f"RAM: {ram_info['available']:.2f}/{ram_info['total']:.2f}GB",
             font=font,
             fill=255,
         )
@@ -70,7 +73,7 @@ def display_system_info(snapshot: dict) -> None:
         disk_info = snapshot["disk"]
         draw.text(
             (x, top + 16),
-            f"Disk: {disk_info['available']}/{disk_info['total']}GB",
+            f"Disk: {disk_info['available']:.2f}/{disk_info['total']:.2f}GB",
             font=font,
             fill=255,
         )
