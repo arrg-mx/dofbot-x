@@ -6,7 +6,6 @@ from Arm_Lib import Arm_Device
 Arm = Arm_Device()
 time.sleep(.1)
 # Read the angles of all steering gears and print them out circularly
-# 读取所有舵机的角度，并循环打印出来
 def main():
 
     while True:

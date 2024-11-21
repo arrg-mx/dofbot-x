@@ -57,7 +57,6 @@ while True:
     break
 
 # read CPU usage
-# 读取CPU占用率
 def getCPULoadRate():
     f1 = os.popen("cat /proc/stat", 'r')
     stat1 = f1.readline()
@@ -88,7 +87,6 @@ def getCPULoadRate():
     return str_CPU
 
 # read system time
-# 读取系统时间
 def getSystemTime():
     cmd = "date +%H:%M:%S"
     date_time = subprocess.check_output(cmd, shell = True )
@@ -99,7 +97,6 @@ def getSystemTime():
 
 
 # Read free memory / total memory
-# 读取空闲的内存 / 总内存
 def getFreeRAM():
     cmd = "free -h | awk 'NR==2{printf \"RAM: %.1f/%.1fGB \", $7,$2}'"
     FreeRam = subprocess.check_output(cmd, shell = True )
@@ -108,7 +105,6 @@ def getFreeRAM():
     return str_FreeRam
 
 # Read free TF card space / TF card total space
-# 读取空闲的TF卡空间 / TF卡总空间
 def getFreeDisk():
     cmd = "df -h | awk '$NF==\"/\"{printf \"Disk:%.1f/%.1fGB\", $4,$2}'"
     Disk = subprocess.check_output(cmd, shell = True )
@@ -117,7 +113,6 @@ def getFreeDisk():
     return str_Disk
 
 # Read current IP address
-# 读取当前IP地址
 def getLocalIP():
     cmd = "hostname -I | cut -d\' \' -f1"
     IP = subprocess.check_output(cmd, shell = True )
@@ -134,7 +129,6 @@ def main():
             draw.rectangle((0,0,width,height), outline=0, fill=0)
 
             # read system information
-            # 读取系统信息
             str_CPU = getCPULoadRate()
             str_Time = getSystemTime()
             str_FreeRAM = getFreeRAM()
@@ -142,7 +136,6 @@ def main():
             str_IP = getLocalIP()
 
             # OLED loading shows cache information
-            # OLED加载显示缓存信息
             draw.text((x, top), str_CPU, font=font, fill=255)
             draw.text((x+50, top), str_Time, font=font, fill=255)
             draw.text((x, top+8), str_FreeRAM,  font=font, fill=255)
