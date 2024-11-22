@@ -731,3 +731,110 @@
   731  l
   732  ls Dofbot/dofbot-x/docs/rawfiles/
   733  history >> Dofbot/dofbot-x/docs/rawfiles/dofbot-x_hist_221124.txt
+  734  cd Dofbot/dofbot-x/
+  735  gst
+  736  git branch -l
+  737  git add dofbot_arm/src/yahboom_arm_lib/test_ctrl_servo.py 
+  738  git commit -m "Updated test_ctrl_servo.py"
+  739  gst
+  740  git add .
+  741  git commit -m "Added dofbot-x_hist_221124.txt history file"
+  742  l
+  743  cd ..
+  744  l
+  745  mv config/ ./dofbot-x/
+  746  l
+  747  cd dofbot-x/
+  748  l
+  749  cd config/
+  750  l
+  751  l tests/
+  752  mkdir dofbot-x_docker
+  753  l
+  754  rm Docker_oldfile 
+  755  l
+  756  rm Dockerfile.bak 
+  757  l
+  758  mv Dockerfile dofbot-x_docker/
+  759  mv tests/ dofbot-x_docker/
+  760  l
+  761  vim ros2_setup.bash 
+  762  mv ros2_setup.bash dofbot-x_docker/
+  763  cd ..
+  764  gst
+  765  git add config/
+  766  git commit -m "Added config and dofbot-x_docker folder with docker container files." 
+  767  gst
+  768  cat ../ttkey.txt 
+  769  git push -u origin main
+  770  gst
+  771  cd config/dofbot-x_docker/
+  772  code .
+  773  rsttrm 
+  774  code .
+  775  vscode 
+  776  ll
+  777  git fetch --all
+  778  l
+  779  cd ..
+  780  l
+  781  cd dofbot-x_docker/
+  782  l
+  783  history | grep "docker image build"
+  784  docker image build -t dofbotx_ros_humble .
+  785  history | grep "docker" | grep dofbotx_ros_humble
+  786  docker run --runtime nvidia -it --rm --network host --shm-size=8g --volume /tmp/argus_socket:/tmp/argus_socket --volume /etc/enctune.conf:/etc/enctune.conf --volume /etc/nv_tegra_release:/etc/nv_tegra_release --volume /tmp/nv_jetson_model:/tmp/nv_jetson_model --volume /var/run/dbus:/var/run/dbus --volume /var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket --volume /var/run/docker.sock:/var/run/docker.sock --volume /home/arrusr/Dev/jetson-containers/data:/data -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro --device /dev/snd --device /dev/bus/usb --device /dev/video0 --device /dev/i2c-0 --device /dev/i2c-1 --device /dev/i2c-2 --device /dev/i2c-3 --device /dev/i2c-4 --device /dev/i2c-5 --device /dev/i2c-6 -v /run/jtop.sock:/run/jtop.sock --name jetson_container_20241121_133405 -v /home/arrusr/Dofbot:/home/Dofbot dofbotx_ros_humble
+  787  vim ~/.bash_aliases 
+  788  docker image list
+  789  docker image rm 4bb4558c8028
+  790  l
+  791  vim Dockerfile 
+  792  cd 
+  793  cd Dofbot/dofbot-x/
+  794  git fetch -a
+  795  git pull origin main
+  796  cd config/dofbot-x_docker/
+  797  vim Dockerfile 
+  798  cd ..
+  799  gst
+  800  git add .
+  801  git commit -m "Updated Dockerfile contents"
+  802  git push -u origin main
+  803  cd config/
+  804  l
+  805  cd dofbot-x_docker/
+  806  docker image build -t dofbotx_ros_humble .
+  807  l
+  808  ls tests/
+  809  vim Dockerfile 
+  810  mv tests/ scrtpts/
+  811  vim Dockerfile 
+  812  mv scrtpts/ tools/
+  813  vim Dockerfile 
+  814  git add .
+  815  git commit -m "Updated Dockerfile contents (2)"
+  816  git push -u origin main
+  817  docker image list
+  818  docker image rm ed0e0a58a99a
+  819  docker image build -t dofbotx_ros_humble .
+  820  docker image list
+  821  docker image rm 67228a5cc7e0
+  822  vim Dockerfile 
+  823  docker image list
+  824  docker image 
+  825  docker image inspect humble-desktop-l4t-r32.7.1
+  826  docker image inspect aa289ec9b090
+  827  docker image list
+  828  docker image 
+  829  docker image history 
+  830  docker image history aa289ec9b090
+  831  gst
+  832  git add .
+  833  git commit -m "Updated Dockerfile contents (3)"
+  834  git push -u origin main
+  835  gst
+  836  docker image build -t dofbotx_ros_humble .
+  837  docker image list
+  838  cd ..
+  839  l
+  840  history > docs/rawfiles/dofbot-x_hist_221124.txt 
