@@ -1,0 +1,733 @@
+    1  sudo apt-get update && sudo apt update 
+    2  sudo apt upgrade 
+    3  sudo apt autoremove
+    4  sudo apt shutdown -r now
+    5  sudo shutdown -r now
+    6  echo "Instalando prerequisitos: Nerdfonts, lsd, git, curl"
+    7  sudo apt install curl git
+    8  echo "Descargando 'SourceCodePro (Sauce Code Pro Nerd Fonts)' de https://www.nerdfonts.com/font-downloads"
+    9  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/SourceCodePro.zip  -P ~/Downloads
+   10  mkdir ~/.fonts
+   11  unzip ~/Downloads/SourceCodePro.zip -d ~/.fonts/SourceCodePro/
+   12  echo "Actualizando fuentes"
+   13  fc-cache -fv
+   14  fc-list | grep ".fonts"
+   15  fc-list | grep "Sauce"
+   16  fc-list | grep "SauceCodePro"
+   17  echo "Instalando fuentes... Done!"
+   18  rm ~/Downloads/
+   19  rm ~/Downloads/SourceCodePro.zip 
+   20  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   21  source $HOME/.cargo/env
+   22  rustup override set stable
+   23  rustup update stable
+   24  echo "Instalando lsd... From source... Instalando RUST compiler (rustup)... Done!"
+   25  echo "Instalando lsd... From source... Prerequisites"
+   26  sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl
+   27  cc -V
+   28  cc -v
+   29  echo "Instalando lsd... From source... Prerequisites... Done!"
+   30  echo "Instalando lsd... From source... Using cargo..."
+   31  cargo install --git https://github.com/Peltoche/lsd.git --branch master
+   32  echo "Instalando lsd... From source... Using cargo... Done!"
+   33  lsd ~/.config/
+   34  echo "Configurando lsd... "
+   35  mkdir -p ~/.config/lsd
+   36  lsd -l ~/.config/lsd/
+   37  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/lsd/config.yaml -P ~/.config/lsd/
+   38  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/lsd/themes/terminal-colors.yaml -P ~/.config/lsd/
+   39  mv ~/.config/lsd/terminal-colors.yaml ~/.config/lsd/colors.yaml
+   40  lsd -t ~/.config/lsd/
+   41  vim ~/.config/lsd/config.yaml 
+   42  lsd -t ~/.config/lsd/
+   43  lsd -l ~/.config/lsd/
+   44  echo "Configurando lsd... Done!"
+   45  echo "Customizing terminal colors (manual)... Nord and Nord (Black BG) Themes..."
+   46  ll
+   47  lsd -l
+   48  echo "Customizing terminal colors (manual)... Nord and Nord (Black BG) Themes... Done!"
+   49  echo "Configurando git(manual)..."
+   50  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/gitconfig
+   51  mv gitconfig .gitconfig
+   52  git config --global -e
+   53  vim .gitconfig 
+   54  git config --global -e
+   55  echo "Configurando git(manual)... Done!"
+   56  echo "Copying my extra scripts..."
+   57  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/gitbash/git-completition.bash -P ~/.config/gitbash/
+   58  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/gitbash/git-prompt.sh -P ~/.config/gitbash/
+   59  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/rosmgmt/ros_mgmt.sh -P ~/.config/rosmgmt
+   60  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/rosmgmt/ros2_humble_conf.bash -P ~/.config/rosmgmt
+   61  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/rosmgmt/ros2_galactic_conf.bash -P ~/.config/rosmgmt
+   62  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/rosmgmt/ros_noetic_conf.bash -P ~/.config/rosmgmt
+   63  wget https://raw.githubusercontent.com/rivascf/dotfiles-m-temp/main/config/utilities/venv_prompt.sh -P ~/.config/utilities
+   64  lsd -l  ~/.config/gitbash/
+   65  lsd -l  ~/.config/rosmgmt/
+   66  lsd -l  ~/.config/utilities/
+   67  echo "Copying my extra scripts... Done!"
+   68  echo "Updating changes to 'bashrc'..."
+   69  vim .bashrc
+   70  exec "$SHELL"
+   71  vim .bashrc
+   72  exec "$SHELL"
+   73  ll
+   74  lt ~/.config/lsd/
+   75  ping -c 100 -s .2 xe.com
+   76  echo "Adding aliases  to 'bash_alias'... Done!"
+   77  vim .bash_aliases
+   78  exec "$SHELL"
+   79  rsttrm 
+   80  echo "Adding aliases  to 'bash_alias'... Done!"
+   81  logout
+   82  cat ttkey.txt 
+   83  ip -h
+   84  l
+   85  l ~/Downloads/
+   86  mkdir ~/Dev
+   87  cd Dev/
+   88  git clone https://github.com/arrg-mx/arrg_utils.git
+   89  cat /proc/device-tree/model
+   90  cat /sys/devices/gpu.0/load
+   91  ls /sys/devices/gpu.0/
+   92  cat /sys/devices/gpu.0/gpu_powered_on 
+   93  cat /sys/devices/gpu.0/user 
+   94  cat /sys/devices/gpu.0/load
+   95  lsusb 
+   96  ls
+   97  cd
+   98  dpkg-query --show nvidia-l4t-core
+   99  cd Dev
+  100  git clone https://github.com/dusty-nv/jetson-containers
+  101  bash jetson-containers/install.sh
+  102  ls /etc/docker/
+  103  ll /etc/docker/
+  104  sudo vim /etc/docker/daemon.json 
+  105  cat /etc/docker/daemon.json 
+  106  sudo systemctl restart docker
+  107  sudo docker info | grep 'Default Runtime'
+  108  echo $USER
+  109  sudo usermod -aG docker $USER
+  110  sudo nvpmodel -q
+  111  cd ..
+  112  cd ~/Documents/
+  113  l
+  114  ifconfig
+  115  pwd
+  116  l
+  117  cat tt
+  118  cat ttkey.txt 
+  119  git clone https://github.com/arrg-mx/dofbot-x.git
+  120  l
+  121  cd dofbot-x/
+  122  gst
+  123  git fetch main
+  124  git fetch -a
+  125  git status
+  126  git switch dobot-drv
+  127  git checkout dobot-drv
+  128  git fetch -a
+  129  l
+  130  git pull origin dobot-drv 
+  131  git checkout main
+  132  git pull origin main
+  133  git lg
+  134  l
+  135  git pull origin dobot-drv 
+  136  l
+  137  git checkout main
+  138  mkdir -p docs/rawfiles
+  139  history >> docs/rawfiles/dofbot-x_hist_201124.txt
+  140  gst
+  141  git add docs/
+  142  git commit -m "Added docs and rawfiles folders with dofbot-x history file."
+  143  git push -u origin main
+  144  ls
+  145  ll
+  146  cd Dev/
+  147  l
+  148  cd
+  149  jetson-containers run dustynv/ros:humble-desktop-l4t-r32.7.1
+  150  docker image list
+  151  docker container list
+  152  docker ps
+  153  jetson-containers run humble-desktop-l4t-r32.7.1
+  154  jetson-containers run dustynv/ros:humble-desktop-l4t-r32.7.1
+  155  l
+  156  mkdir Dofbot
+  157  l
+  158  cd Dofbot
+  159  git clone https://github.com/arrg-mx/arrg_utils
+  160  l
+  161  ls ~/Documents/
+  162  mv ~/Documents/* .
+  163  l
+  164  lt dofbot-x
+  165  mkdir -p dofbot_ws/src
+  166  cd
+  167  lt Dofbot/
+  168  python -V
+  169  python3 -V
+  170  jetson-containers run dustynv/ros:humble-desktop-l4t-r32.7.1
+  171  jtop
+  172  jetson-containers build --name=dofbotx_container python:3.10 ros:humble-desktop
+  173  jetson-containers build --name=dofbotx_container python:r32.7.1 ros:humble-desktop
+  174  jetson-containers build --name=dofbotx_container python ros:humble-desktop
+  175  docker image list
+  176  jetson-containers build --name=dofbotx_container python:3.10 ros:humble-desktop
+  177  jetson-containers run dustynv/ros:humble-desktop-l4t-r32.7.1
+  178  docker image list
+  179  docker image purge
+  180  docker image prune
+  181  docker image list
+  182  docker image prune --force
+  183  docker image rm -h
+  184  docker image rm humble-desktop-l4t-r32.7.1 --force
+  185  docker image rm aa289ec9b090 --force
+  186  docker image list
+  187  docker image rm 378b3a2a4ba6 --force
+  188  docker image rm b754522e80bc --force
+  189  docker image rm c33dabb43e7a --force
+  190  docker image rm 7a58a57ab551 --force
+  191  docker image list
+  192  docker container list
+  193  echo "Instalando pyenv, from medium blog's post 'https://medium.com/@aashari/easy-to-follow-guide-of-how-to-install-pyenv-on-ubuntu-a3730af8d7f0'"
+  194  sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+  195  curl https://pyenv.run | bash
+  196  vim .bashrc
+  197  rsttrm 
+  198  If you wish to continue building other containers if one fails, use the `--skip-errors` flag (this only applies to building multiple containers)
+  199  ## Changing the Base Image
+  200  By default, the base container image used at the start of the build chain will be [`l4t-base`](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-base) on JetPack 4, [`l4t-jetpack`](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-jetpack) on JetPack 5, and [`ubuntu:22.04`](https://hub.docker.com/_/ubuntu/tags?page=&page_size=&ordering=&name=22.04) on JetPack 6.  However, if you want to add packages to a container that you already have, you can specify your own base image:
+  201  ```bash
+  202  jetson-containers build --base=my_container:latest --name=my_container:pytorch pytorch  # add pytorch to your container
+  203  ```
+  204  > [!NOTE]  
+  205  > On JetPack 4/5, it's assumed that base images already have the JetPack components available/installed (CUDA Toolkit, cuDNN, TensorRT).  
+  206  > 
+  207  > On JetPack 6 (L4T r36.x), the CUDA components will automatically be installed on top of your base image if required. 
+  208  > > You can specify the CUDA version by using `CUDA_VERSION` environment variable, otherwise it will pick the CUDA version that was made available to the L4T version.
+  209  ## Changing Versions
+  210  Many packages are versioned, and define subpackages like `pytorch:2.0`, `pytorch:2.1`, ect in the package's [configuration](/docs/packages.md#python).  For some core packages, you can control the default version of these with environment variables like `PYTORCH_VERSION`, `PYTHON_VERSION`, and `CUDA_VERSION`.  Other packages referring to these will then use your desired versions instead of the previous ones:  
+  211  ```bash
+  212  CUDA_VERSION=12.4 jetson-containers build --name=cu124/ pytorch  # build PyTorch for CUDA 12.4
+  213  ```
+  214  If you omit a tag from your name, then a default one will be assigned (based on the tag prefix/postfix of the package - typically `$L4T_VERSION`)
+  215  You can also build your container under a namespace ending in `/` (for example `--name=my_builds/` would result in an image like `my_builds/pytorch:r36.2.0`).  Using namespaces can help manage/organize your images if you are building a lot of them.
+  216  ## Multiple Containers
+  217  The `--multiple` flag builds separate containers for each of the packages specified:
+  218  ```bash
+  219  $ jetson-containers build --multiple pytorch tensorflow2   # built a pytorch container and a tensorflow2 container
+  220  $ jetson-containers build --multiple ros*                  # build all ROS containers
+  221  ```
+  222  The dependencies are also able to specify with [`requires`](/docs/packages.md) which versions of L4T, CUDA, and Python they need, so changing the CUDA version has cascading effects downstream and will also change the default version of cuDNN, TensorRT, and PyTorch (similar to how changing the PyTorch version also changes the default version of torchvision and torchaudio).  The reverse also occurs in the other direction, for example changing the TensorRT version will change the default version of CUDA (unless you explicitly specify it otherwise).  
+  223  | Package       | Environment Variable | Versions                                                                             |
+  224  |---------------|----------------------|-----------------------------------------------------------------------------------------|
+  225  | [`cuda`](/packages/cuda/cuda) | `CUDA_VERSION` | [`cuda/config.py`](/packages/cuda/cuda/config.py) |
+  226  | [`cudnn`](/packages/cuda/cudnn) | `CUDNN_VERSION` | [`cudnn/config.py`](/packages/cuda/cudnn/config.py) |
+  227  | [`tensorrt`](/packages/tensorrt) | `TENSORRT_VERSION` | [`tensorrt/config.py`](/packages/tensorrt/config.py) |
+  228  | [`python`](/packages/python) | `PYTHON_VERSION` | [`python/config.py`](/packages/python/config.py) |
+  229  | [`pytorch`](/packages/python) | `PYTORCH_VERSION` | [`pytorch/config.py`](/packages/pytorch/config.py) |
+  230  Using these together, you can rebuild the container stack for the specific version combination that you want:
+  231  ```bash
+  232  CUDA_VERSION=12.4 PYTHON_VERSION=3.11 PYTORCH_VERSION=2.3 \
+  233    jetson-containers build l4t-text-generation
+  234  ```
+  235  The available versions are defined in the package's configuration scripts (some you can simply add new releases to by referring to the new git tag/branch, others need pointed to specific release downloads).  Not all combinations are compatible, as the versioned packages frequently define the minimum version of others in the build tree they rely on (for example, TensorRT 10 requires CUDA 12.4).
+  236  For packages that provide different versions but don't have their own environment variable defined, you can specify the desired version of them that your container depends on in the Dockerfile header under [`depends`](/docs/packages.md), and it will override the default and build using them instead (e.g. by using `depends: onnxruntime:1.17` instead of `depends: onnxruntime`).  Like above, these versions will also cascade across the build.
+  237  > [!NOTE]  
+  238  > On JetPack 6 (L4T r36.x), if you don't have `CUDA_VERSION` specified, it will pick the CUDA version that was packaged with that version of L4T in the JetPack.
+  239  > - L4T r36.2 (JetPack 6.0 DP) --> CUDA `12.2`
+  240  > - L4T r36.3 (JetPack 6.0 GA) --> CUDA `12.4`
+  241  > - L4T r36.4 (JetPack 6.1) --> CUDA `12.6`
+  242  ## Pip Server
+  243  history
+  244  CUDA_VERSION=12.2 PYTHON_VERSION=3.10 jetson-containers build --name=dofbotx_container --skip-tests=all ros:humble-desktop
+  245  sudo shutdown -r now
+  246  To build a container that includes one or more packages:
+  247  ```bash
+  248  $ jetson-containers build pytorch               # build a container with just PyTorch
+  249  $ jetson-containers build pytorch jupyterlab    # build container with PyTorch and JupyterLab
+  250  ```
+  251  pyenv --version
+  252  pyenv install --list | grep -e "3.10.*" | grep -v "grep"
+  253  pyenv install 3.10.15
+  254  pyenv install --list | more
+  255  pyenv install 3.12
+  256  pyenv versions
+  257  cd Dofbot/
+  258  l
+  259  cd arrg_utils/
+  260  l
+  261  pyenv local 3.10.15 
+  262  python -m venv .venv
+  263  python -V
+  264  rm .python-version 
+  265  source .venv/bin/activate
+  266  python test_lib.py 
+  267  deactivate
+  268  cd
+  269  echo "Instalando pyenv... Validating... Done!"
+  270  echo "Instalando pyenv... Testing..."
+  271  PYTHON_VERSION=3.11 PYTORCH_VERSION=2.3 \
+  272  PYTHON_VERSION=3.10 jetson-containers build ros:humble-desktop
+  273  PYTHON_VERSION=3.10 jetson-containers --name=dofbotx_container ros:humble-desktop
+  274  PYTHON_VERSION=3.10 jetson-containers build --name=dofbotx_container ros:humble-desktop
+  275  jetson-containers run ros:humble-desktop
+  276  history | grep "jetson-containers run" | grep -v grep
+  277  jetson-containers run dustynv/ros:humble-desktop-l4t-r32.7.1
+  278  PYTHON_VERSION=3.10 jetson-containers build --name=dofbotx_container ros:humble-desktop
+  279  PYTHON_VERSION=3.10 jetson-containers build --name=dofbotx_container ros
+  280  PYTHON_VERSION=3.10 jetson-containers build ros:humble-desktop 
+  281  jetson-containers run dustynv/ros:humble-desktop-l4t-r32.7.1
+  282  docker image list
+  283  docker image rm aa289ec9b090
+  284  PYTHON_VERSION=3.10 jetson-containers run dustynv/ros:humble-desktop-l4t-r32.7.1
+  285  l
+  286  docker image list
+  287  jetson-containers run dustynv/ros:humble-desktop-l4t-r32.7.1
+  288  PYTHON_VERSION=3.10 jetson-containers build dustynv/ros:humble-desktop-l4t-r32.7.1
+  289  PYTHON_VERSION=3.10 jetson-containers build ros:humble-desktop-l4t-r32.7.1
+  290  PYTHON_VERSION=3.10 jetson-containers build $(autotag ros:humble-desktop)
+  291  CUDA_VERSION=12.4 PYTHON_VERSION=3.10 / jetson-containers build $(autotag ros:humble-desktop)
+  292  CUDA_VERSION=12.4 PYTHON_VERSION=3.10 jetson-containers build $(autotag ros:humble-desktop)
+  293  CUDA_VERSION=12.4 PYTHON_VERSION=3.10 jetson-containers build ros:humble-desktop
+  294  jetson_containers 
+  295  CUDA_VERSION=12.4 PYTHON_VERSION=3.10 jetson-containers build --name=dofbotx_container ros:humble-desktop
+  296  history | grep "jetson-containers build" | grep -v grep
+  297  CUDA_VERSION=12.4 PYTHON_VERSION=3.10 jetson-containers build --name=dofbotx_container # Building Containersros:humble-desktop
+  298  The [`jetson-containers build`](/jetson-containers) command is a proxy launcher for [`jetson_containers/build.py`](/jetson_containers/build.py).  It can be run from any working directory after you clone the repo and run the installer from the [System Setup](/docs/setup.md) (you should also probably mount additional storage when building containers)
+  299  To list the packages available to build for your version of JetPack/L4T, you can use `--list-packages` and `--show-packages`:
+  300  ```bash
+  301  $ jetson-containers build --list-packages       # list all packages
+  302  $ jetson-containers build --show-packages       # show all package metadata
+  303  $ jetson-containers build --show-packages ros*  # show all the ros packages
+  304  ```
+  305  The builder will chain together the Dockerfiles of each of packages specified, and use the result of one build stage as the base image of the next.  The initial base image defaults to one built for your version of JetPack, but can be changed by specifying the [`--base` argument](#changing-the-base-image).
+  306  The docker commands that get run during the build are printed and also saved to shell scripts under the `jetson-containers/logs` directory.  To see just the commands it would have run without actually running them, use the `--simulate` flag.
+  307  ## Container Names
+  308  By default, the name of the container will be based on the package you chose to build. However, you can name it with the `--name` argument:
+  309  ```bash
+  310  jetson-containers build --name=my_container pytorch jupyterlab
+  311  ```
+  312  history | more
+  313  UDA_VERSION=12.4 PYTHON_VERSION=3.10 jetson-containers build --name=dofbotx_contain
+  314  CUDA_VERSION=12.4 PYTHON_VERSION=3.10 jetson-containers build --name=dofbotx_container ros:humble-desktop
+  315  docker images ls
+  316  docker container ls
+  317  docker ps
+  318  jetson-containers run $(autotag ros:humble-desktop)
+  319  l
+  320  echo $(pwd)/Dofbot
+  321  docker images ls
+  322  jetson-containers run dustynv/ros:humble-desktop-l4t-r32.7.1
+  323  docker images ls
+  324  docker container ls
+  325  jetson-containers run -v $(pwd)/Dofbot:/home/Dofbot dustynv/ros:humble-desktop-l4t-r32.7.1
+  326  l
+  327  cd Dofbot
+  328  l
+  329  cd cd arrg_utils/
+  330  l
+  331  cd arrg_utils/
+  332  l
+  333  .venv/bin/python test_lib.py 
+  334  .venv/bin/python -V
+  335  cd ..
+  336  cd dofbot-x/
+  337  l
+  338  lt
+  339  cd utilities/
+  340  cp -rf ../../arrg_utils/arrg_utils/ .
+  341  l
+  342  vim dofbotx_oled.py 
+  343  lt arrg_utils/
+  344  vim dofbotx_oled.py 
+  345  cd ..
+  346  pyenv local 3.10.15 
+  347  python -m venv .venv
+  348  rm .python-version 
+  349  source .venv/bin/activate
+  350  cd utilities/
+  351  pip install Adafruit_SSD1306
+  352  pip install --upgrade pip
+  353  l
+  354  python dofbotx_oled.py 
+  355  l
+  356  vim dofbotx_oled.py 
+  357  python dofbotx_oled.py 
+  358  vim dofbotx_oled.py 
+  359  python dofbotx_oled.py 
+  360  pip install PIL
+  361  pip install Pillow
+  362  python dofbotx_oled.py 
+  363  vim dofbotx_oled.py 
+  364  vim oled.py
+  365  python oled.py 
+  366  fc-list | grep "SauceCodePro" | grep "Mono"
+  367  cp /home/arrusr/.fonts/SourceCodePro/SauceCodeProNerdFontMono-Regular.ttf .
+  368  l
+  369  vim oled.py
+  370  python oled.py 
+  371  vim oled.py
+  372  python oled.py 
+  373  vim oled.py
+  374  python oled.py 
+  375  cat oled.py 
+  376  vim dofbotx_oled.py 
+  377  python dofbotx_oled.py 
+  378  vim dofbotx_oled.py 
+  379  python dofbotx_oled.py 
+  380  vim dofbotx_oled.py 
+  381  python dofbotx_oled.py 
+  382  exit
+  383  cd Dofbot/dofbot-x/
+  384  l
+  385  source .venv/bin/activate
+  386  deactivate 
+  387  gst
+  388  cd 
+  389  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/RobotoMono.zip  -P ~/Downloads
+  390  unzip ~/Downloads/ -d ~/.fonts/RobotoMono/
+  391  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Terminus.zip ~/Downloads
+  392  ls Downloads/
+  393  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Terminus.zip ~/Downloads
+  394  ls Downloads/
+  395  ll Downloads/
+  396  l
+  397  rm Terminus.zip.1 
+  398  rm Terminus.zip
+  399  l
+  400  cat \[\!NOTE\] 
+  401  rm \[\!NOTE\] 
+  402  l
+  403  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Terminus.zip ~/Downloads
+  404  l
+  405  mv Terminus.zip ~/Downloads/
+  406  ls Downloads/
+  407  unzip ~/Downloads/Terminus.zip -d ~/.fonts/Terminus/
+  408  cd Dofbot/dofbot-x/utilities/
+  409  l
+  410  cp /home/arrusr/.fonts/Terminus/TerminessNerdFont-Regular.ttf .
+  411  l
+  412  ls /home/arrusr/.fonts/RobotoMono/
+  413  l /home/arrusr/.fonts/RobotoMono/
+  414  ls /home/arrusr/.fonts/RobotoMono/
+  415  cp /home/arrusr/.fonts/RobotoMono/RobotoMonoNerdFontMono-Regular.ttf .
+  416  l
+  417  vim dofbotx_oled.py 
+  418  cd ..
+  419  source .venv/bin/activate
+  420  cd utilities/
+  421  python dofbotx_oled.py 
+  422  vim dofbotx_oled.py 
+  423  python dofbotx_oled.py 
+  424  vim dofbotx_oled.py 
+  425  l
+  426  cp /home/arrusr/.fonts/Terminus/TerminessNerdFontMono-Regular.ttf .
+  427  l
+  428  rm TerminessNerdFont-Regular.ttf 
+  429  l
+  430  vim dofbotx_oled.py 
+  431  python dofbotx_oled.py 
+  432  vim dofbotx_oled.py 
+  433  python dofbotx_oled.py 
+  434  vim dofbotx_oled.py 
+  435  python dofbotx_oled.py 
+  436  vim dofbotx_oled.py 
+  437  python dofbotx_oled.py 
+  438  l
+  439  cd ..
+  440  l
+  441  ll
+  442  deactivate
+  443  gst
+  444  ll
+  445  vim .gitignore 
+  446  gst
+  447  git add .gitignore 
+  448  git commit -m "Updated gitignore file excluding arrg_utils module."
+  449  gst
+  450  git add utilities/*.ttf
+  451  gst
+  452  git add -m "Added Truetype fonts to test in display"
+  453  git commit -m "Added Truetype fonts to test in display"
+  454  ls
+  455  gst
+  456  git add utilities/dofbotx_oled.py 
+  457  git commit -m "Updated dofbotx_oled.py functionality, libraries and trutype font."
+  458  gst
+  459  git add .
+  460  git commit -m "Added old oled script as a reference to the new display."
+  461  g lg
+  462  git push -u origin main
+  463  cd
+  464  sudo shutdown now
+  465  cd Dev/
+  466  l
+  467  cd ..
+  468  l
+  469  cd Dofbot/
+  470  l
+  471  lt dofbot-x/
+  472  python3 
+  473  jetson-containers run -v $(pwd)/Dofbot:/home/Dofbot dustynv/ros:humble-desktop-l4t-r32.7.1
+  474  l
+  475  ls Dofbot/
+  476  rm -rf Dofbot/
+  477  cd ..
+  478  l
+  479  jetson-containers run -v $(HOME)/Dofbot:/home/Dofbot dustynv/ros:humble-desktop-l4t-r32.7.1
+  480  jetson-containers run -v ~/Dofbot:/home/Dofbot dustynv/ros:humble-desktop-l4t-r32.7.1
+  481  cd Dofbot/
+  482  l
+  483  mkdir config
+  484  vim config/ros2_setup.bash
+  485  cd
+  486  vim .bash_aliases 
+  487  rsttrm 
+  488  logout
+  489  ros2cont 
+  490  sudo apt-get update
+  491  sudo apt-get install -y i2c-tools
+  492  sudo apt-get install -y python3-smbus
+  493  python3
+  494  sudo i2cdetect -y -r 0
+  495  cd ..
+  496  cd ~
+  497  l
+  498  cd Dofbot/
+  499  l
+  500  cd dofbot-x/
+  501  l
+  502  mkdir Arm_Lib
+  503  cd Arm_Lib/
+  504  pwd
+  505  l
+  506  cd ..
+  507  l
+  508  cd ws_dofbot-x/src/
+  509  cp -rf ~/Dofbot/dofbot-x/Arm_Lib .
+  510  l
+  511  ros2cont 
+  512  l
+  513  cp -rf Arm_Lib/ dofbotx_ctrl/dofbotx_ctrl/
+  514  ros2cont 
+  515  l
+  516  ros2cont 
+  517  sudo shutdown now
+  518  sudo usermod -a -G i2c $USER
+  519  sudo pip3 install -U jetson-stats
+  520  jtop
+  521  sudo shutdown -r now
+  522  jtop
+  523  sudo i2cdetect -y -r 0
+  524  i2cdetect -y -r 0
+  525  i2cdetect -y -r 1
+  526  vim Dofbot/dofbot-x/utilities/dofbotx_oled.py 
+  527  i2cdetect -y -r 1
+  528  cd cd Dofbot/
+  529  l
+  530  cd Dofbot/
+  531  l
+  532  cd dofbot-x/
+  533  l
+  534  vim test_arm.py
+  535  l
+  536  mv test_arm.py test_led_rgb.py
+  537  python3 test_led_rgb.py 
+  538  vim Arm_Lib/Arm_Lib.py 
+  539  python3 test_led_rgb.py 
+  540  python3 test_buzzer.py 
+  541  vim test_buzzer.py 
+  542  python3 test_buzzer.py 
+  543  vim test_buzzer.py 
+  544  vim test_ctrl_servo.py 
+  545  python3 test_ct_servo.py 
+  546  vim test_read_servo.py 
+  547  python3 test_read_servo.py 
+  548  vim test_ctrl_all.py 
+  549  python3 test_ctrl_all.py 
+  550  vim test_ctrl_all.py 
+  551  python3 test_ctrl_all.py 
+  552  vim test_clamp_block.py 
+  553  vim test_left_right.py 
+  554  python3 test_left_right.py 
+  555  vim test_clamp_block.py 
+  556  python3 test_clamp_block.py 
+  557  vim test_move_block.py 
+  558  python3 test_move_block.py 
+  559  ls
+  560  l
+  561  l dofbot_arm/
+  562  l dofbot_arm/src/
+  563  mkdir -p dofbot_arm/src/yahboom_arm_lib
+  564  mv Arm_Lib/ dofbot_arm/src/yahboom_arm_lib/
+  565  l dofbot_arm/src/yahboom_arm_lib/
+  566  mv test_*.py dofbot_arm/src/yahboom_arm_lib/
+  567  lt dofbot_arm/src/yahboom_arm_lib/
+  568  gst
+  569  git add dofbot_arm/src/yahboom_arm_lib/
+  570  git commit -m "Added original Yahboom Arm_Lib for reference."
+  571  gst
+  572  g lg
+  573  l
+  574  cd ..
+  575  cat ttkey.txt 
+  576  cd dofbot-x/
+  577  git push -u origin main
+  578  l
+  579  git status
+  580  cd ..
+  581  sudo shutdown now
+  582  cd Dofbot/
+  583  l
+  584  cd dofbot-x/
+  585  l
+  586  cd utilities/
+  587  l
+  588  python3 dofbotx_oled.py 
+  589  cd ..
+  590  source .venv/bin/activate
+  591  cd utilities/
+  592  python3 dofbotx_oled.py 
+  593  python3 oled.py 
+  594  python3 dofbotx_oled.py 
+  595  deactivate
+  596  cd ..
+  597  cd dofbot_arm/
+  598  l
+  599  cd src/
+  600  l
+  601  cd yahboom_arm_lib/
+  602  l
+  603  python3 test_buzzer.py 
+  604  python3 test_led_rgb.py.py 
+  605  python3 test_led_rgb.py
+  606  python3 test_ctrl_servo.py 
+  607  python3 test_ctrl_all.py 
+  608  python3 test_read_servo.py 
+  609  l
+  610  python3 test_left_right.py
+  611  python3 test_move_block.py
+  612  python3 test_read_servo.py 
+  613  ll
+  614  sudo shudown now
+  615  sudo shutdown now
+  616  ls
+  617  ros2cont 
+  618  docker image list
+  619  l
+  620  cd Dofbot
+  621  l
+  622  cd config
+  623  vim Dockerfile
+  624  vim test_i2c.py
+  625  vim Dockerfile
+  626  l
+  627  mkdir tests
+  628  mv test_i2c.py tests/
+  629  l
+  630  vim Dockerfile
+  631  docker image build -t dofbotx_ros_humble .
+  632  vim Dockerfile
+  633  cp Dockerfile Dockerfile.bak
+  634  vim Dockerfile
+  635  docker image build -t dofbotx_ros_humble .
+  636  vim Dockerfile
+  637  docker image build -t dofbotx_ros_humble .
+  638  cd
+  639  docker images list
+  640  docker image list
+  641  docker run --runtime nvidia -it --rm --network host --shm-size=8g --volume /tmp/argus_socket:/tmp/argus_socket --volume /etc/enctune.conf:/etc/enctune.conf --volume /etc/nv_tegra_release:/etc/nv_tegra_release --volume /tmp/nv_jetson_model:/tmp/nv_jetson_model --volume /var/run/dbus:/var/run/dbus --volume /var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket --volume /var/run/docker.sock:/var/run/docker.sock --volume /home/arrusr/Dev/jetson-containers/data:/data -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro --device /dev/snd --device /dev/bus/usb --device /dev/video0 --device /dev/i2c-0 --device /dev/i2c-1 --device /dev/i2c-2 --device /dev/i2c-3 --device /dev/i2c-4 --device /dev/i2c-5 --device /dev/i2c-6 -v /run/jtop.sock:/run/jtop.sock --name jetson_container_20241121_133405 -v /home/arrusr/Dofbot:/home/Dofbot dofbotx_ros_humble
+  642  docker image list
+  643  sudo shutdown now
+  644  l
+  645  ls
+  646  lsb_release -a
+  647  ros2cont 
+  648  ls
+  649  cd Dofbot/
+  650  L
+  651  l
+  652  ls
+  653  cd dofbot-x/
+  654  l
+  655  ls
+  656  cd utilities/
+  657  l
+  658  ls
+  659  vim oled.py 
+  660  python3 oled.py 
+  661  python3-V
+  662  python3 -V
+  663  cd ..
+  664  source .venv/bin/activate
+  665  cd utilities/
+  666  python3 -V
+  667  python -V
+  668  python oled.py 
+  669  python dofbotx_oled.py 
+  670  deactivate 
+  671  python3 dofbotx_oled.py 
+  672  deactivate
+  673  cd ..
+  674  l
+  675  ll
+  676  ls
+  677  cd dofbot_arm/
+  678  l
+  679  cd src/
+  680  l
+  681  cd yahboom_arm_lib/
+  682  l
+  683  ls
+  684  python3 test_buzzer.py 
+  685  python3 test_ctrl_servo.py 
+  686  python3 test_ctrl_all.py 
+  687  python3 test_read_servo.py 
+  688  ls
+  689  python3 test_move_block.py 
+  690  cd
+  691  history | grep "jetson-containers"
+  692  jetson-containers run dustynv/ros:humble-desktop-l4t-r32.7.1
+  693  history | grep "jetson-containers"
+  694  history | grep "jetson-containers" |  grep volume
+  695  jetson-containers run -v /home/arrusr/Dofbot:/home/Dofbot dustynv/ros:humble-desktop-l4t-r32.7.1 
+  696  history | grep "jetson-containers"
+  697  cd Dofbot
+  698  cd config/
+  699  l
+  700  vim Dockerfile
+  701  history | grep "docker build"
+  702  history | grep "docker"
+  703  l
+  704  cp Dockerfile Docker_oldfile
+  705  docker image build -t deletme_ros_humble .
+  706  docker image list
+  707  docker run deletme_ros_humble
+  708  docker run deletme_ros_humble -t
+  709  docker run deletme_ros_humble -it
+  710  docker run deletme_ros_humble -it -rm
+  711  history | grep "docker"
+  712  docker run --runtime nvidia -it --rm deletme_ros_humble
+  713  docker run --runtime nvidia -it --rm --network host --shm-size=8g --volume /tmp/argus_socket:/tmp/argus_socket --volume /etc/enctune.conf:/etc/enctune.conf --volume /etc/nv_tegra_release:/etc/nv_tegra_release --volume /tmp/nv_jetson_model:/tmp/nv_jetson_model --volume /var/run/dbus:/var/run/dbus --volume /var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket --volume /var/run/docker.sock:/var/run/docker.sock --volume /home/arrusr/Dev/jetson-containers/data:/data -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro --device /dev/snd --device /dev/bus/usb --device /dev/video0 --device /dev/i2c-0 --device /dev/i2c-1 --device /dev/i2c-2 --device /dev/i2c-3 --device /dev/i2c-4 --device /dev/i2c-5 --device /dev/i2c-6 -v /run/jtop.sock:/run/jtop.sock --name jetson_container_20241121_133405 -v /home/arrusr/Dofbot:/home/Dofbot deletme_ros_humble
+  714  git config --global -l
+  715  git --version
+  716  cd ..
+  717  cd ws_dofbot-x/src/
+  718  logout
+  719  cd Dofbot/dofbot-x/dofbot_arm/src/yahboom_arm_lib/
+  720  l
+  721  vim test_ctrl_servo.py 
+  722  python3 test_ctrl_servo.py 
+  723  exit
+  724  sudo shutdown now
+  725  l
+  726  docker image list
+  727  docker image rm deletme_ros_humble
+  728  docker image rm f8a0e7d51859
+  729  docker image rm f8a0e7d51859 --force
+  730  docker image list
+  731  l
+  732  ls Dofbot/dofbot-x/docs/rawfiles/
+  733  history >> Dofbot/dofbot-x/docs/rawfiles/dofbot-x_hist_221124.txt
