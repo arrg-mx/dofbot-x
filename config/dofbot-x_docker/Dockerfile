@@ -14,6 +14,6 @@ WORKDIR /home/Dofbot/
 # Optional: Add a simple Python script for testing
 COPY dofbotx_ros2_setup.bash /home/Dofbot/
 COPY tools/ /home/Dofbot/
-RUN source /home/Dofbot/dofbotx_ros2_setup.bash
+# RUN source /home/Dofbot/dofbotx_ros2_setup.bash
 # Entry point or command for debugging (can be overridden)
 CMD ["bash"]
