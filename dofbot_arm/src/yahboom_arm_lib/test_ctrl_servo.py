@@ -18,12 +18,16 @@ id = 6
 
 def main():
     while True:
+        print(f"Arm.Arm_serial_servo_write({id}, 120, 500)")
         Arm.Arm_serial_servo_write(id, 120, 500)
         time.sleep(1)
+        print(f"Arm.Arm_serial_servo_write({id}, 50, 500)")
         Arm.Arm_serial_servo_write(id, 50, 500)
         time.sleep(1)
+        print(f"Arm.Arm_serial_servo_write({id}, 120, 500)")
         Arm.Arm_serial_servo_write(id, 120, 500)
         time.sleep(1)
+        print(f"Arm.Arm_serial_servo_write({id}, 180, 500)")
         Arm.Arm_serial_servo_write(id, 180, 500)
         time.sleep(1)
 
