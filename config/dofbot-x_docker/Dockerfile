@@ -17,3 +17,5 @@ COPY tools/ /home/Dofbot/
 # RUN source /home/Dofbot/dofbotx_ros2_setup.bash
 # Entry point or command for debugging (can be overridden)
 CMD ["bash"]
+ENV ROS_DOMAIN_ID=10
+ENV ROS2_DOFBOTX_WS='/home/Dofbot/ws_dofbot-x'
