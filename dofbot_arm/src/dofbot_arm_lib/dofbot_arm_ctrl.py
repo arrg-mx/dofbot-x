@@ -1,7 +1,7 @@
 #!/usr/bin/env python8
 # coding: utf-8
 
-# import smbus
+import smbus
 import time
 import math
 from types import Optional
@@ -16,9 +16,20 @@ class ArmCtrl(object):
     def __init__(self) -> None:
         """
         Initializes the Arm_Device with a default I2C address and bus.
+        
+        Designed Dofbot Arm values - static values.
+            I2C co-proccessor address: '0x15'
+            Arm servos resolution: (lower_limit=900, upper_limit=3100)
+                Servos 2, 3, 4 (movement inverted)
+                Servos 1, 6 (direct movement)
+            Arm range Deg: [0 to 180]
+            Arm resolution: 2200 (Arm servo upper limit - Arm servo lower limit)
+            Wrist servo resolution: (min=380, max=3700)
+            Wrist range Deg: [0 to 270]
+            Wrist resolution: 3400 (upper limit - bottom limit)
         """
         self.__address = 0x15
-        # self.__bus = smbus.SMBus(1)
+        self.__bus = smbus.SMBus(1)
         self.__arm_servos_resolution = (900, 3100)
         self.__wrist_servo_resolution = (380, 3700)
         self.__arm_range_deg = 180
