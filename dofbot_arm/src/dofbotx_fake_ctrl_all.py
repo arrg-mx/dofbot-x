@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #coding=utf-8
 import time
-from dofbot_arm_lib import ArmCtrl
+from dofbotx_arm_lib import ArmCtrl
 
 Arm = ArmCtrl()
 
