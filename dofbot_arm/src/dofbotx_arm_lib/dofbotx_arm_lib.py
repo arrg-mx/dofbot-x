@@ -1,10 +1,11 @@
 #!/usr/bin/env python8
 # coding: utf-8
 
-import smbus
+# import smbus
 import time
 import math
-from types import Optional
+import logging
+# from types import Optional
 
 
 class ArmCtrl(object):
@@ -13,7 +14,7 @@ class ArmCtrl(object):
     Provides methods to control individual and grouped servo angles, set servo offsets, read servo angles, and manage other hardware functions.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, logger:logging.Logger=None, on_debug_mode:bool=False) -> None:
         """
         Initializes the Arm_Device with a default I2C address and bus.
         
@@ -29,7 +30,9 @@ class ArmCtrl(object):
             Wrist resolution: 3400 (upper limit - bottom limit)
         """
         self.__address = 0x15
-        self.__bus = smbus.SMBus(1)
+        # self.__bus = smbus.SMBus(1)
+        self.__logger = logging.Logger() if not logging else logger
+        self.__on_debug_mode = on_debug_mode
         self.__arm_servos_resolution = (900, 3100)
         self.__wrist_servo_resolution = (380, 3700)
         self.__arm_range_deg = 180
@@ -283,7 +286,7 @@ class ArmCtrl(object):
             [s1, s2, s3, s4, s5, s6], duration, in_radians=in_radians
         )
 
-    def serial_servo_read(self, servo_id: int) -> Optional[int]:
+    def serial_servo_read(self, servo_id: int): # -> Optional[int]:
         """
         Reads the current angle of a specified servo.
 
@@ -319,3 +322,32 @@ class ArmCtrl(object):
             pos = 180 - pos
 
         return pos
+
+def main():
+    arm_ctrl = ArmCtrl()
+
+    # Individually control a steering gear to move to a certain angle
+    id = 5
+    arm_ctrl.serial_servo_write(id, 120.0, 500, False)
+    arm_ctrl.serial_servo_write(id, (2 * math.pi / 3), 500)
+    time.sleep(1)
+    id = 3
+    arm_ctrl.serial_servo_write(id, 120.0, 500, False)
+    arm_ctrl.serial_servo_write(id, (2 * math.pi / 3), 500)
+    time.sleep(1)
+    id = 6
+    arm_ctrl.serial_servo_write(id, 120.0, 500, False)
+    arm_ctrl.serial_servo_write(id, (2 * math.pi / 3), 500)
+    time.sleep(1)
+    id = 1
+    arm_ctrl.serial_servo_write(id, 120.0, 500, False)
+    arm_ctrl.serial_servo_write(id, (2 * math.pi / 3), 500)
+    time.sleep(1)
+    id = 2
+    arm_ctrl.serial_servo_write(id, 60.0, 500, False)
+    arm_ctrl.serial_servo_write(id, math.pi / 3, 500)
+    time.sleep(1)
+
+
+if __name__ == "__main__":
+    main()
