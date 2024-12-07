@@ -48,7 +48,6 @@ WORKDIR /home/Dofbot/
 
 # Copy necessary files
 COPY dofbotx_ros2_setup.bash /home/Dofbot/
-# COPY tools/ /home/Dofbot/
 
 # Default command for debugging (can be overridden)
 CMD ["bash"]
