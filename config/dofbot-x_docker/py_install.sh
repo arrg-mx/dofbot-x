@@ -2,7 +2,7 @@
 # Python installer
 set -x
 
-apt-get update
+apt-get update -y && apt-get upgrade -y
 apt-get install -y --no-install-recommends \
 	python${PYTHON_VERSION} \
 	python${PYTHON_VERSION}-dev

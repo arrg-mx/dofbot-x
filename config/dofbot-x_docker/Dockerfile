@@ -1,37 +1,59 @@
 # Base image
 FROM dustynv/ros:humble-desktop-l4t-r32.7.1
-# Update and install required packages
-ARG PYTHON_VERSION_ARG="3.10"
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    i2c-tools && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+ARG MYHOME=/root
+ENV MYHOME ${MYHOME}
+ARG PYTHONVER=3.10.14
+ENV PYTHONVER ${PYTHONVER}
+ARG PYTHONNAME=base
+ENV PYTHONNAME ${PYTHONNAME}
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y locales wget git curl zip vim apt-transport-https tzdata language-pack-nb language-pack-nb-base manpages \
+    build-essential libjpeg-dev libssl-dev xvfb zlib1g-dev libbz2-dev libreadline-dev libreadline6-dev libsqlite3-dev tk-dev libffi-dev libpng-dev libfreetype6-dev \
+    libx11-dev libxtst-dev libfontconfig1 lzma lzma-dev
 
-ENV PYTHON_VERSION=${PYTHON_VERSION_ARG} \
-PIP_DISABLE_PIP_VERSION_CHECK=on \
-PIP_DEFAULT_TIMEOUT=100 \
-PYTHONFAULTHANDLER=1 \
-PYTHONUNBUFFERED=1 \
-PYTHONIOENCODING=utf-8 \
-PYTHONHASHSEED=random \
-PIP_NO_CACHE_DIR=off \
-PIP_CACHE_PURGE=true \
-PIP_ROOT_USER_ACTION=ignore \
-TWINE_NON_INTERACTIVE=1 \
-DEBIAN_FRONTEND=noninteractive
+RUN git clone https://github.com/pyenv/pyenv.git ${MYHOME}/.pyenv && \
+    git clone https://github.com/yyuu/pyenv-virtualenv.git ${MYHOME}/.pyenv/plugins/pyenv-virtualenv && \
+    git clone https://github.com/pyenv/pyenv-update.git ${MYHOME}/.pyenv/plugins/pyenv-update
 
-COPY py_install.sh /tmp/install_python.sh 
-RUN /tmp/install_python.sh
+SHELL ["/bin/bash", "-c", "-l"]
 
-# Set the working directory inside the container
-# The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile. 
-# If the WORKDIR doesn’t exist, it will be created even if it’s not used in any subsequent Dockerfile instruction.
+COPY ./.bash_profile  /tmp/
+RUN cat /tmp/.bash_profile >> ${MYHOME}/.bashrc && \
+    cat /tmp/.bash_profile >> ${MYHOME}/.bash_profile && \
+    rm -f /tmp/.bash_profile && \
+    source ${MYHOME}/.bash_profile && \
+    pyenv install ${PYTHONVER} && \
+    pyenv virtualenv ${PYTHONVER} ${PYTHONNAME} && \
+    pyenv global ${PYTHONNAME}
+
+COPY requirements.txt /tmp/requirements.txt
+
+# Install pip for Python 3.10 and smbus2 package
+RUN python -m ensurepip --upgrade && \
+    python -m pip install --upgrade pip && \
+    python -m pip install -r /tmp/requirements.txt
+
+# Add a verification script to confirm Python version and smbus installation
+COPY verify_python.py /tmp/verify_python.py
+RUN python /tmp/verify_python.py
+
+# Add runtime validation scripts
+COPY validate_smbus.py /usr/local/bin/validate_smbus.py
+COPY validate_smbus2.py /usr/local/bin/validate_smbus2.py
+RUN chmod +x /usr/local/bin/validate_smbus.py /usr/local/bin/validate_smbus2.py
+
+# Set the working directory
 WORKDIR /home/Dofbot/
-# Optional: Add a simple Python script for testing
+
+# Copy necessary files
 COPY dofbotx_ros2_setup.bash /home/Dofbot/
-COPY tools/ /home/Dofbot/
-# RUN source /home/Dofbot/dofbotx_ros2_setup.bash
-# Entry point or command for debugging (can be overridden)
+# COPY tools/ /home/Dofbot/
+
+# Default command for debugging (can be overridden)
 CMD ["bash"]
+
+# Environment variables
 ENV ROS_DOMAIN_ID=10
 ENV ROS2_DOFBOTX_WS='/home/Dofbot/ws_dofbot-x'
+

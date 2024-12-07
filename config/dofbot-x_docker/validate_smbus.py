@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # Validate I2C communication using smbus with retries
 
 import smbus
