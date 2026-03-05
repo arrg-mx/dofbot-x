@@ -7,14 +7,17 @@ Arm = Arm_Device()
 time.sleep(.1)
 # Read the angles of all steering gears and print them out circularly
 def main():
-
+    n = 0
+    aa = [0,0,0,0,0,0]
     while True:
         for i in range(6):
-            aa = Arm.Arm_serial_servo_read(i+1)
-            print(aa)
+            aa[i] = Arm.Arm_serial_servo_read(i+1)
+#            print(aa)
             time.sleep(.01)
+        print(f"[{n}] Servo Read: {aa}")
         time.sleep(.5)
-        print(" END OF LINE! ")
+        n += 1
+        #print(" END OF LINE! ")
 
     
 try :

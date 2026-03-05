@@ -6,7 +6,11 @@ ARG PYTHONVER=3.10.14
 ENV PYTHONVER ${PYTHONVER}
 ARG PYTHONNAME=base
 ENV PYTHONNAME ${PYTHONNAME}
+
 ARG DEBIAN_FRONTEND=noninteractive
+
+RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y locales wget git curl zip vim apt-transport-https tzdata language-pack-nb language-pack-nb-base manpages \
     build-essential libjpeg-dev libssl-dev xvfb zlib1g-dev libbz2-dev libreadline-dev libreadline6-dev libsqlite3-dev tk-dev libffi-dev libpng-dev libfreetype6-dev \
@@ -44,15 +48,15 @@ COPY validate_smbus2.py /usr/local/bin/validate_smbus2.py
 RUN chmod +x /usr/local/bin/validate_smbus.py /usr/local/bin/validate_smbus2.py
 
 # Set the working directory
-WORKDIR /home/Dofbot/
+WORKDIR /home/robot/
 
 # Copy necessary files
-COPY dofbotx_ros2_setup.bash /home/Dofbot/
+COPY dofbotx_ros2_setup.bash /home/robot/
 
 # Default command for debugging (can be overridden)
 CMD ["bash"]
 
 # Environment variables
 ENV ROS_DOMAIN_ID=10
-ENV ROS2_DOFBOTX_WS='/home/Dofbot/ws_dofbot-x'
+#ENV ROS2_DOFBOTX_WS='/home/rofbot/ws_dofbot-x'
 
